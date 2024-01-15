@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: "Quicksand", BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  color: #212529;
+  background-color: #fff;
+}
+
+/* .alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.45rem 1.25rem;
+  color: inherit;
+} */
+
+/* table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+  padding-right: 30px;
+  text-align: center;
+} */
+
+div.dataTables_wrapper div.dataTables_filter {
+  text-align: right;
+  margin-bottom: 13px;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  margin-top: 13px;
+  white-space: nowrap;
+  justify-content: flex-end;
+}
+
+/* .dataTables_scroll {
+  border-bottom: 1px solid #dee2e6;
+} */
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+}
+
+/* .title {
+  font-size: 25px;
+} */
+
+.title-icon {
+  margin-right: 4px;
+}
+
+.border {
+  border: 0.5px solid #dee2e6 !important;
+}
+
+/* .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: 1px solid #0dcaf0 !important;
+  background-color: #0dcaf0 !important;
+} */
