@@ -43,7 +43,7 @@
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>Provider</th>
+                  <th>Operator</th>
                   <th>Nominal</th>
                   <th>Harga</th>
                   <th></th>
@@ -52,12 +52,12 @@
             <tbody>
                <?php
                $no = 1;
-               $query = $conn->query("SELECT * FROM pulsa ORDER BY provider ASC");
+               $query = $conn->query("SELECT * FROM pulsa ORDER BY operator ASC");
                foreach ($query as $pls) :
                ?>
                   <tr>
                      <td><?= $no++; ?></td>
-                     <td><?= $pls['provider']; ?></td>
+                     <td><?= $pls['operator']; ?></td>
                      <td><?= $pls['nominal']; ?></td>
                      <td><?= $pls['harga'] ?></td>
                      <td>
@@ -84,8 +84,8 @@
                               <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
-                                    <label for="provider" class="form-label">Provider</label>
-                                    <input type="text" class="form-control" id="provider" name="provider" value="<?= $pls['provider'] ?>" autocomplete="off">
+                                    <label for="operator" class="form-label">Operator</label>
+                                    <input type="text" class="form-control" id="operator" name="operator" value="<?= $pls['operator'] ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="nominal">Nominal</label>
@@ -118,7 +118,7 @@
                            <form action="modules/pulsa/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
                                  <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
-                                 <div class="fs-6">Apakah data provider <strong><?= $pls['provider'] ?></strong> dengan nominal <strong><?= $pls['nominal'] ?></strong> akan dihapus?</div>
+                                 <div class="fs-6">Apakah data operator <strong><?= $pls['operator'] ?></strong> dengan nominal <strong><?= $pls['nominal'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>
@@ -151,8 +151,8 @@
          <form action="modules/pulsa/proses_tambah.php" method="POST">
             <div class="modal-body px-4">
                <div class="mb-2">
-                  <label for="provider" class="form-label">Provider</label>
-                  <input type="text" class="form-control" id="provider" name="provider" placeholder="Masukkan provider" autocomplete="off">
+                  <label for="operator" class="form-label">Operator</label>
+                  <input type="text" class="form-control" id="operator" name="operator" placeholder="Masukkan operator" autocomplete="off">
                </div>
                <div class="mb-2">
                   <label class="form-label" for="nominal">Nominal</label>

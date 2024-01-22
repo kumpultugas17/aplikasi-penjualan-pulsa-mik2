@@ -39,7 +39,7 @@
       unset($_SESSION['alert']);
       ?>
       <div class="table-responsive">
-         <table class="table table-striped border" id="dataTable">
+         <table class="table table-striped border" id="data">
             <thead>
                <tr>
                   <th>No.</th>
@@ -56,7 +56,7 @@
                ?>
                   <tr>
                      <td><?= $no++; ?></td>
-                     <td><?= $plg['nama']; ?></td>
+                     <td><?= $plg['nama_pelanggan']; ?></td>
                      <td><?= $plg['no_hp']; ?></td>
                      <td>
                         <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-toggle="modal">
@@ -74,16 +74,16 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-edit"></i><span> Update Data Pelanggan</span>
+                                 <i class="fas fa-user-edit"></i><span> Edit Data Pelanggan</span>
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pelanggan/proses_update.php" method="POST">
+                           <form action="modules/pelanggan/proses_edit.php" method="POST">
                               <input type="hidden" name="id_pelanggan" value="<?= $plg['id_pelanggan']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
                                     <label class="form-label">Nama Pelanggan</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $plg['nama']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="<?= $plg['nama_pelanggan']; ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="no_hp">No. HP</label>
@@ -112,7 +112,7 @@
                            <form action="modules/pelanggan/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
                                  <input type="hidden" name="id_pelanggan" value="<?= $plg['id_pelanggan']; ?>">
-                                 <div class="fs-6">Apakah Pelanggan <strong><?= $plg['nama'] ?></strong> dengan nomor handphone <strong><?= $plg['no_hp'] ?></strong> akan dihapus?</div>
+                                 <div class="fs-6">Apakah Pelanggan <strong><?= $plg['nama_pelanggan'] ?></strong> dengan nomor handphone <strong><?= $plg['no_hp'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>
@@ -138,7 +138,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <h3 class="modal-title fs-5" id="staticBackdropLabel">
-               <i class="fas fa-edit"></i><span> Entry Data Pelanggan</span>
+               <i class="fas fa-user-plus"></i><span> Entry Data Pelanggan</span>
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
