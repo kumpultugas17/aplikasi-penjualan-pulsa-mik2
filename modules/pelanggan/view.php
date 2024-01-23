@@ -2,7 +2,7 @@
    <div class="col-md-12">
       <h5>
          <!-- judul halaman tampil data penjualan -->
-         <i class="fas fa-user-alt me-1 title-icon"></i> Data Penjualan
+         <i class="fas fa-user-friends me-1 title-icon"></i> Data Penjualan
 
          <!-- Button trigger modal -->
          <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#modalPelanggan">
@@ -60,7 +60,7 @@
                      <td><?= $plg['no_hp']; ?></td>
                      <td>
                         <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-toggle="modal">
-                           <i class="fas fa-edit"></i>
+                           <i class="fas fa-user-edit"></i>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-trash"></i>
@@ -146,7 +146,7 @@
             <div class="modal-body px-4">
                <div class="mb-2">
                   <label class="form-label">Nama Pelanggan</label>
-                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="off">
+                  <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Masukkan nama" autocomplete="off">
                </div>
                <div class="mb-2">
                   <label class="form-label" for="no_hp">No. HP</label>

@@ -39,7 +39,7 @@
       unset($_SESSION['alert']);
       ?>
       <div class="table-responsive">
-         <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+         <table class="table table-striped table-bordered" id="data" style="width:100%">
             <thead>
                <tr>
                   <th>No.</th>
@@ -76,11 +76,11 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-edit"></i><span> Update Data Pulsa</span>
+                                 <i class="fas fa-edit"></i><span> Edit Data Pulsa</span>
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pulsa/proses_update.php" method="POST">
+                           <form action="modules/pulsa/proses_edit.php" method="POST">
                               <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
