@@ -57,7 +57,7 @@ include 'config/config.php';
                </li>
                <li class="nav-item">
                   <a class="nav-link <?= $_GET['module'] == 'penjualan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=penjualan">
-                     <i class="fas fa-cart-plus"></i> Penjualan
+                     <i class="fas fa-shopping-cart"></i> Penjualan
                   </a>
                </li>
                <li class="nav-item">

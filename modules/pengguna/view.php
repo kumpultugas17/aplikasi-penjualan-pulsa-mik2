@@ -82,12 +82,20 @@
                               <input type="hidden" name="id_pengguna" value="<?= $pgn['id_pengguna']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
-                                    <label class="form-label">Nama pengguna</label>
-                                    <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" value="<?= $pgn['nama_pengguna']; ?>" autocomplete="off">
+                                    <label class="form-label">Nama Pengguna</label>
+                                    <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" value="<?= $pgn['nama_pengguna'] ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
-                                    <label class="form-label" for="no_hp">No. HP</label>
-                                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $pgn['no_hp']; ?>" autocomplete="off">
+                                    <label class="form-label" for="email">E-Mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="<?= $pgn['email'] ?>" autocomplete="off" readonly>
+                                 </div>
+                                 <div class="mb-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password baru" autocomplete="off">
+                                 </div>
+                                 <div class="mb-2">
+                                    <label class="form-label" for="konfirmasi">Konfirmasi</label>
+                                    <input type="password" class="form-control" id="konfirmasi" name="konfirmasi" placeholder="Masukkan Ulang Password baru" autocomplete="off">
                                  </div>
                               </div>
                               <div class="modal-footer">
@@ -100,7 +108,7 @@
                   </div>
 
                   <!-- Modal Hapus-->
-                  <div class="modal fade" id="hapuspengguna<?= $pgn['id_pengguna'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="hapusPengguna<?= $pgn['id_pengguna'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -112,7 +120,7 @@
                            <form action="modules/pengguna/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
                                  <input type="hidden" name="id_pengguna" value="<?= $pgn['id_pengguna']; ?>">
-                                 <div class="fs-6">Apakah pengguna <strong><?= $pgn['nama_pengguna'] ?></strong> dengan nomor handphone <strong><?= $pgn['no_hp'] ?></strong> akan dihapus?</div>
+                                 <div class="fs-6">Apakah nama pengguna <strong><?= $pgn['nama_pengguna'] ?></strong> dengan e-mail <strong><?= $pgn['email'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>

@@ -2,10 +2,10 @@
    <div class="col-md-12">
       <h5>
          <!-- judul halaman tampil data penjualan -->
-         <i class="fas fa-tablet-alt title-icon"></i> Data Pulsa
+         <i class="fas fa-shopping-cart title-icon"></i> Data Penjualan
 
          <!-- Button trigger modal -->
-         <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#addPulsa">
+         <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#tambahPenjualan">
             <i class="fas fa-plus"></i> Tambah
          </button>
       </h5>
@@ -43,6 +43,9 @@
             <thead>
                <tr>
                   <th>No.</th>
+                  <th>Tanggal</th>
+                  <th>Nama Pelanggan</th>
+                  <th>No. Handphone</th>
                   <th>Operator</th>
                   <th>Nominal</th>
                   <th>Harga</th>
@@ -52,26 +55,29 @@
             <tbody>
                <?php
                $no = 1;
-               $query = $conn->query("SELECT * FROM pulsa ORDER BY operator ASC");
-               foreach ($query as $pls) :
+               $query = $conn->query("SELECT * FROM penjualan ORDER BY tanggal DESC");
+               foreach ($query as $pjl) :
                ?>
                   <tr>
                      <td><?= $no++; ?></td>
-                     <td><?= $pls['operator']; ?></td>
-                     <td><?= $pls['nominal']; ?></td>
-                     <td><?= $pls['harga'] ?></td>
+                     <td><?= $pjl['operator']; ?></td>
+                     <td><?= $pjl['nominal']; ?></td>
+                     <td><?= $pjl['harga'] ?></td>
+                     <td><?= $pjl['operator']; ?></td>
+                     <td><?= $pjl['nominal']; ?></td>
+                     <td><?= $pjl['harga'] ?></td>
                      <td>
-                        <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPulsa<?= $pls['id_pulsa'] ?>" data-bs-toggle="modal">
+                        <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPulsa<?= $pjl['id_pulsa'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPulsa<?= $pls['id_pulsa'] ?>" data-bs-toggle="modal">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPulsa<?= $pjl['id_pulsa'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-trash"></i>
                         </button>
                      </td>
                   </tr>
 
                   <!-- Modal Edit-->
-                  <div class="modal fade" id="editPulsa<?= $pls['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="editPulsa<?= $pjl['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -81,19 +87,19 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
                            <form action="modules/pulsa/proses_edit.php" method="POST">
-                              <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
+                              <input type="hidden" name="id_pulsa" value="<?= $pjl['id_pulsa']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
                                     <label for="operator" class="form-label">Operator</label>
-                                    <input type="text" class="form-control" id="operator" name="operator" value="<?= $pls['operator'] ?>" autocomplete="off">
+                                    <input type="text" class="form-control" id="operator" name="operator" value="<?= $pjl['operator'] ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="nominal">Nominal</label>
-                                    <input type="number" class="form-control" id="nominal" name="nominal" value="<?= $pls['nominal'] ?>" autocomplete="off">
+                                    <input type="number" class="form-control" id="nominal" name="nominal" value="<?= $pjl['nominal'] ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="harga">Harga</label>
-                                    <input type="number" class="form-control" id="harga" name="harga" value="<?= $pls['harga'] ?>" autocomplete="off">
+                                    <input type="number" class="form-control" id="harga" name="harga" value="<?= $pjl['harga'] ?>" autocomplete="off">
                                  </div>
                               </div>
                               <div class="modal-footer">
@@ -106,7 +112,7 @@
                   </div>
 
                   <!-- Modal Hapus-->
-                  <div class="modal fade" id="hapusPulsa<?= $pls['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="hapusPulsa<?= $pjl['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -117,8 +123,8 @@
                            </div>
                            <form action="modules/pulsa/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
-                                 <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
-                                 <div class="fs-6">Apakah data operator <strong><?= $pls['operator'] ?></strong> dengan nominal <strong><?= $pls['nominal'] ?></strong> akan dihapus?</div>
+                                 <input type="hidden" name="id_pulsa" value="<?= $pjl['id_pulsa']; ?>">
+                                 <div class="fs-6">Apakah data operator <strong><?= $pjl['operator'] ?></strong> dengan nominal <strong><?= $pjl['nominal'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>
@@ -139,17 +145,34 @@
 
 
 <!-- Modal Tambah-->
-<div class="modal fade" id="addPulsa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="tambahPenjualan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <h3 class="modal-title fs-5" id="staticBackdropLabel">
-               <i class="fas fa-edit"></i><span> Entry Data Pulsa</span>
+               <i class="fas fa-cart-plus"></i><span> Entry Data Penjualan</span>
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
-         <form action="modules/pulsa/proses_tambah.php" method="POST">
+         <form action="modules/penjualan/proses_tambah.php" method="POST">
             <div class="modal-body px-4">
+               <div class="mb-2">
+                  <label for="tanggal" class="form-label">Tanggal</label>
+                  <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?= date('Y-m-d'); ?>" autocomplete="off">
+               </div>
+               <div class="mb-2">
+                  <label for="pelanggan" class="form-label">Nomor Handphone</label>
+                  <select name="pelanggan" id="pelanggan" class="form-select">
+                     <option value=""></option>
+                     <?php
+                     $pelanggan = $conn->query("SELECT * FROM pelanggan");
+                     foreach ($pelanggan as $plg) :
+                     ?>
+                        <option value="<?= $plg['id_pelanggan'] ?>"><?= $plg['no_hp'] ?></option>
+                     <?php endforeach ?>
+                  </select>
+               </div>
+
                <div class="mb-2">
                   <label for="operator" class="form-label">Operator</label>
                   <input type="text" class="form-control" id="operator" name="operator" placeholder="Masukkan operator" autocomplete="off">
