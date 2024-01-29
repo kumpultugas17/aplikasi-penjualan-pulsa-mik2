@@ -49,7 +49,7 @@
             <i class="fas fa-dollar-sign text-success fa-7x"></i>
          </div>
          <div class="card-body">
-            <h4 class="card-title" id="loadTotal">Rp <?= number_format($get['total_penjualan'], 2, ',', '.'); ?></h4>
+            <h4 class="card-title" id="loadTotal">Rp <?= number_format($get_pendapatan, 2, ',', '.'); ?></h4>
             <p class="card-text">Total Pendapatan</p>
          </div>
       </div>

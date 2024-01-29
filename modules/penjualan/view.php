@@ -55,17 +55,17 @@
             <tbody>
                <?php
                $no = 1;
-               $query = $conn->query("SELECT * FROM penjualan ORDER BY tanggal DESC");
+               $query = $conn->query("SELECT * FROM penjualan INNER JOIN pelanggan ON penjualan.pelanggan = pelanggan.id_pelanggan INNER JOIN pulsa ON penjualan.pulsa = pulsa.id_pulsa ORDER BY tanggal DESC");
                foreach ($query as $pjl) :
                ?>
                   <tr>
                      <td><?= $no++; ?></td>
+                     <td><?= $pjl['tanggal']; ?></td>
+                     <td><?= $pjl['nama_pelanggan']; ?></td>
+                     <td><?= $pjl['no_hp'] ?></td>
                      <td><?= $pjl['operator']; ?></td>
                      <td><?= $pjl['nominal']; ?></td>
-                     <td><?= $pjl['harga'] ?></td>
-                     <td><?= $pjl['operator']; ?></td>
-                     <td><?= $pjl['nominal']; ?></td>
-                     <td><?= $pjl['harga'] ?></td>
+                     <td><?= $pjl['jumlah_bayar'] ?></td>
                      <td>
                         <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPulsa<?= $pjl['id_pulsa'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-edit"></i>
@@ -162,7 +162,7 @@
                </div>
                <div class="mb-2">
                   <label for="pelanggan" class="form-label">Nomor Handphone</label>
-                  <select name="pelanggan" id="pelanggan" class="form-select">
+                  <select name="pelanggan" id="pelanggan" class="form-select" onchange="get_pelanggan()">
                      <option value=""></option>
                      <?php
                      $pelanggan = $conn->query("SELECT * FROM pelanggan");
@@ -172,18 +172,25 @@
                      <?php endforeach ?>
                   </select>
                </div>
-
                <div class="mb-2">
-                  <label for="operator" class="form-label">Operator</label>
-                  <input type="text" class="form-control" id="operator" name="operator" placeholder="Masukkan operator" autocomplete="off">
+                  <label for="nama_pelanggan" class="form-label">Nama Pelanggan</label>
+                  <input type="text" class="form-control" id="nama_pelanggan">
                </div>
                <div class="mb-2">
-                  <label class="form-label" for="nominal">Nominal</label>
-                  <input type="number" class="form-control" id="nominal" name="nominal" placeholder="Masukkan nominal pulsa" autocomplete="off">
+                  <label class="form-label" for="operator">Operator</label>
+                  <select name="pulsa" id="pulsa" class="form-select" onchange="get_pulsa()">
+                     <option value=""></option>
+                     <?php
+                     $pulsa = $conn->query("SELECT * FROM pulsa");
+                     foreach ($pulsa as $pls) :
+                     ?>
+                        <option value="<?= $pls['id_pulsa'] ?>"><?= $pls['operator'] . ' - ' . $pls['nominal'] ?></option>
+                     <?php endforeach ?>
+                  </select>
                </div>
                <div class="mb-2">
                   <label class="form-label" for="harga">Harga</label>
-                  <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga pulsa" autocomplete="off">
+                  <input type="text" class="form-control" id="nama_pelanggan">
                </div>
             </div>
             <div class="modal-footer">
