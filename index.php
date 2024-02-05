@@ -23,6 +23,8 @@ include 'config/config.php';
    <link rel="stylesheet" href="assets/css/style.css">
    <!-- jquery -->
    <script src="assets/js/jquery-3.7.0.js"></script>
+   <!-- selectize -->
+   <link rel="stylesheet" href="assets/plugins/selectize.js/css/selectize.bootstrap5.css">
    <!-- title -->
    <title>Beranda - ELTIPONSEL</title>
 </head>
@@ -96,6 +98,8 @@ include 'config/config.php';
    <script src="assets/plugins/fontawesome-free-5.5.0-web/js/all.min.js"></script>
    <!-- datatable js -->
    <script src="assets/plugins/DataTables/datatables.min.js"></script>
+   <!-- selectize -->
+   <script src="assets/plugins/selectize.js/js/selectize.js"></script>
    <!-- my script -->
    <script>
       $(document).ready(function() {
@@ -106,6 +110,8 @@ include 'config/config.php';
                [5, 10, 20, 'todos']
             ]
          });
+
+         $('.select-search').selectize();
       });
 
       function get_pelanggan() {

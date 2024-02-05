@@ -66,53 +66,15 @@
                      <td><?= $pjl['operator']; ?></td>
                      <td><?= $pjl['nominal']; ?></td>
                      <td><?= $pjl['jumlah_bayar'] ?></td>
-                     <td>
-                        <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPulsa<?= $pjl['id_pulsa'] ?>" data-bs-toggle="modal">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPulsa<?= $pjl['id_pulsa'] ?>" data-bs-toggle="modal">
+                     <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPenjualan<?= $pjl['id_penjualan'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-trash"></i>
                         </button>
                      </td>
                   </tr>
 
-                  <!-- Modal Edit-->
-                  <div class="modal fade" id="editPulsa<?= $pjl['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                     <div class="modal-dialog">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-edit"></i><span> Edit Data Pulsa</span>
-                              </h3>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                           </div>
-                           <form action="modules/pulsa/proses_edit.php" method="POST">
-                              <input type="hidden" name="id_pulsa" value="<?= $pjl['id_pulsa']; ?>">
-                              <div class="modal-body px-4">
-                                 <div class="mb-2">
-                                    <label for="operator" class="form-label">Operator</label>
-                                    <input type="text" class="form-control" id="operator" name="operator" value="<?= $pjl['operator'] ?>" autocomplete="off">
-                                 </div>
-                                 <div class="mb-2">
-                                    <label class="form-label" for="nominal">Nominal</label>
-                                    <input type="number" class="form-control" id="nominal" name="nominal" value="<?= $pjl['nominal'] ?>" autocomplete="off">
-                                 </div>
-                                 <div class="mb-2">
-                                    <label class="form-label" for="harga">Harga</label>
-                                    <input type="number" class="form-control" id="harga" name="harga" value="<?= $pjl['harga'] ?>" autocomplete="off">
-                                 </div>
-                              </div>
-                              <div class="modal-footer">
-                                 <button type="submit" name="submit" class="btn btn-sm text-white btn-info">Simpan</button>
-                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-
                   <!-- Modal Hapus-->
-                  <div class="modal fade" id="hapusPulsa<?= $pjl['id_pulsa'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="hapusPenjualan<?= $pjl['id_penjualan'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -121,10 +83,10 @@
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pulsa/proses_hapus.php" method="POST">
+                           <form action="modules/penjualan/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
-                                 <input type="hidden" name="id_pulsa" value="<?= $pjl['id_pulsa']; ?>">
-                                 <div class="fs-6">Apakah data operator <strong><?= $pjl['operator'] ?></strong> dengan nominal <strong><?= $pjl['nominal'] ?></strong> akan dihapus?</div>
+                                 <input type="hidden" name="id_penjualan" value="<?= $pjl['id_penjualan']; ?>">
+                                 <div class="fs-6">Apakah transaksi <strong><?= $pjl['nama_pelanggan'] ?></strong> dengan nominal <strong><?= $pjl['nominal'] ?></strong> pada tanggal <strong><?= $pjl['tanggal'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>
@@ -142,7 +104,6 @@
       </div>
    </div>
 </div>
-
 
 <!-- Modal Tambah-->
 <div class="modal fade" id="tambahPenjualan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -162,7 +123,7 @@
                </div>
                <div class="mb-2">
                   <label for="pelanggan" class="form-label">Nomor Handphone</label>
-                  <select name="pelanggan" id="pelanggan" class="form-select" onchange="get_pelanggan()">
+                  <select name="pelanggan" id="pelanggan" class="select-search" onchange="get_pelanggan()">
                      <option value=""></option>
                      <?php
                      $pelanggan = $conn->query("SELECT * FROM pelanggan");
@@ -178,7 +139,7 @@
                </div>
                <div class="mb-2">
                   <label class="form-label" for="operator">Operator</label>
-                  <select name="pulsa" id="pulsa" class="form-select" onchange="get_pulsa()">
+                  <select name="pulsa" id="pulsa" class="select-search" onchange="get_pulsa()">
                      <option value=""></option>
                      <?php
                      $pulsa = $conn->query("SELECT * FROM pulsa");
@@ -190,7 +151,7 @@
                </div>
                <div class="mb-2">
                   <label class="form-label" for="harga">Harga</label>
-                  <input type="text" class="form-control" id="nama_pelanggan">
+                  <input type="text" name="harga" class="form-control" id="harga">
                </div>
             </div>
             <div class="modal-footer">
