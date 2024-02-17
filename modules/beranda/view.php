@@ -1,7 +1,8 @@
 <div class="row my-3">
    <div class="col-md-12">
       <div class="alert alert-info py-2" role="alert">
-         <i class="fas fa-info-circle title-icon"></i> Selamat Datang di <strong> Elti Cell </strong>.
+         <i class="fas fa-info-circle title-icon"></i> Selamat Datang di <strong> ELTIPonsel</strong>
+         <p class="float-end"><?= date('l, d F Y') ?> <span>| Pukul <span id="jam"></span> WIB</span></p>
       </div>
    </div>
 </div>
