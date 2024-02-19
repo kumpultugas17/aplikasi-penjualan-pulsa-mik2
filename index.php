@@ -1,6 +1,10 @@
 <?php
 session_start();
 include 'config/config.php';
+if (!isset($_SESSION['login'])) {
+   header('location:login.php');
+   exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +23,14 @@ include 'config/config.php';
    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.5.0-web/css/all.min.css">
    <!-- datatable css -->
    <link rel="stylesheet" href="assets/plugins/DataTables/datatables.min.css">
-   <!-- myStyle -->
+   <!-- myStyle css -->
    <link rel="stylesheet" href="assets/css/style.css">
    <!-- jquery -->
    <script src="assets/js/jquery-3.7.0.js"></script>
-   <!-- selectize -->
+   <!-- selectize css -->
    <link rel="stylesheet" href="assets/plugins/selectize.js/css/selectize.bootstrap5.css">
+   <!-- datepicker css -->
+   <link rel="stylesheet" href="assets/plugins/datepicker/css/datepicker.min.css">
    <!-- title -->
    <title>Beranda - ELTIPONSEL</title>
 </head>
@@ -98,8 +104,10 @@ include 'config/config.php';
    <script src="assets/plugins/fontawesome-free-5.5.0-web/js/all.min.js"></script>
    <!-- datatable js -->
    <script src="assets/plugins/DataTables/datatables.min.js"></script>
-   <!-- selectize -->
+   <!-- selectize js -->
    <script src="assets/plugins/selectize.js/js/selectize.js"></script>
+   <!-- datepicker js -->
+   <script src="assets/plugins/datepicker/js/bootstrap-datepicker.min.js"></script>
    <!-- my script -->
    <script>
       // Jam berjalan 
@@ -136,6 +144,13 @@ include 'config/config.php';
          });
 
          $('.select-search').selectize();
+      });
+
+      // datepicker
+      $('.date-picker').datepicker({
+         autoclose: true,
+         todayHighlight: true,
+         format: 'dd M yyyy'
       });
 
       function get_pelanggan() {

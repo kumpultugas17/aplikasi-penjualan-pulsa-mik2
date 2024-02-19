@@ -37,11 +37,11 @@
       <form action="modules/laporan/get_data.php" class="row gx-2 gy-3 align-items-center" method="post">
          <div class="col-sm-6">
             <div class="input-group">
-               <input type="date" name="tgl_awal" class="form-control" placeholder="Pilih tanggal awal" autocomplete="off" required>
+               <input type="text" name="tgl_awal" class="date-picker form-control" placeholder="Pilih tanggal awal" autocomplete="off" required>
                <div class="input-group-text">
                   to
                </div>
-               <input type="date" name="tgl_akhir" class="form-control" placeholder="Pilih tanggal akhir" autocomplete="">
+               <input type="text" name="tgl_akhir" class="date-picker form-control" placeholder="Pilih tanggal akhir" autocomplete="">
             </div>
          </div>
          <div class="col-sm-6">
